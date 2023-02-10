@@ -1,5 +1,5 @@
 public class Ship1 extends Ship {
-
+    double t = Math.random()*360;
     Ship1(int x, int y, Launcher launcher, int team) {
         super(x, y, launcher, team);
 
@@ -13,9 +13,9 @@ public class Ship1 extends Ship {
             double theta = Math.random()*360;
             if(scan(theta)<200){
                 fire(theta);
+                thrust(theta+180);
             }
         }
-
 
     }
 }

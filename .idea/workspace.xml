@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d70bc037-006c-4632-9c0f-bcda7e8a4cd3" name="Changes" comment="started game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bullets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bullets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ship1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ship1.java" afterDir="false" />
     </list>

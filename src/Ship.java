@@ -9,14 +9,14 @@ public class Ship {
     private int health = 10;
     public int x;
     public int y;
-    public int xvel;
-    public int yvel;
+    public double xvel;
+    public double yvel;
     public int team;
 
-    public static final int THRUSTPOWER = 2;
+    public static final double THRUSTPOWER = 1;
     public static final int MAXENERGY = 100;
     private double energy = MAXENERGY;
-    private double energyRegen = 0.01;
+    private double energyRegen = 0.5;
     public static final int dimen = 20;
     private static final BufferedImage img;
     private Launcher launcher;
@@ -63,10 +63,20 @@ public class Ship {
 
         // bounce off walls
         if((x <= 0 && xvel < 0) || (x + dimen > Launcher.GAME_WIDTH && xvel > 0)) {
-            xvel *= -0.5;
+            xvel *= -0.1;
+            if (x<=0){
+                x=0;
+            }else {
+                x = Launcher.GAME_WIDTH-dimen;
+            }
         }
         if((y <= 0 && yvel < 0) || (y +dimen > Launcher.GAME_HEIGHT && yvel > 0)) {
-            yvel *= -0.5;
+            yvel *= -0.1;
+            if (y<=0){
+                y=0;
+            }else {
+                y = Launcher.GAME_HEIGHT-dimen;
+            }
         }
 
     }
@@ -75,6 +85,8 @@ public class Ship {
         if(energy < costs.get("scan")){
             return -1;
         }
+        energy-=costs.get("scan");
+
         theta = Math.toRadians(theta);
         double distance = 0;
         double x= this.x + dimen/2. + Math.cos(theta)*Math.sqrt(2) * (dimen+2);
@@ -92,6 +104,7 @@ public class Ship {
         if(energy < costs.get("fire")){
             return;
         }
+        energy-=costs.get("fire");
         Bullets b = new Bullets(x+dimen, y+dimen, theta, team);
     }
 
