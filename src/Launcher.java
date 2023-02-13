@@ -21,7 +21,7 @@ public class Launcher extends JPanel implements Runnable {
         this.setPreferredSize(SCREEN_SIZE);
 
         Ship player1 = new Ship1(10,10,this,0);
-        Ship player2 = new Ship1(100,100,this,1);
+        Ship player2 = new MShip(100,100,this,1);
         ShipList = new Ship[]{player1, player2};
 
         gameThread = new Thread(this);

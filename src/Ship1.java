@@ -16,6 +16,5 @@ public class Ship1 extends Ship {
                 thrust(theta+180);
             }
         }
-
     }
 }
