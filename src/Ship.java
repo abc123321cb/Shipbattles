@@ -6,17 +6,19 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Ship {
-    private int health = 10;
+    public static final int MAXHEALTH = 5;
+    private int health = MAXHEALTH;
     public int x;
     public int y;
     public double xvel;
     public double yvel;
     public int team;
+    String name;
 
     public static final double THRUSTPOWER = 1;
     public static final int MAXENERGY = 100;
     private double energy = MAXENERGY;
-    private double energyRegen = 0.5;
+    public final double energyRegen = 0.5;
     public static final int dimen = 20;
     private static final BufferedImage img;
     private Launcher launcher;
@@ -39,14 +41,16 @@ public class Ship {
         this.y = y;
         this.team = team;
         this.launcher = launcher;
+        name = "Default";
     }
 
     public double getEnergy() {
         return energy;
     }
+    public int getHealth(){return health;}
     public void damage(int x){
         health-=x;
-        System.out.println("This ship has " + health + " hull left");
+        System.out.println("This ship on team " + team + " has " + health + " hull left");
     }
     public void draw(Graphics g) {
         move();
@@ -78,7 +82,6 @@ public class Ship {
                 y = Launcher.GAME_HEIGHT-dimen;
             }
         }
-
     }
 
     public int scan(double theta){
@@ -93,7 +96,7 @@ public class Ship {
         double y= this.y + dimen/2. + Math.sin(theta)*Math.sqrt(2) * (dimen+2);
         while(!launcher.pointcollide(x, y)){
             x+=Math.cos(theta)*Launcher.step;
-            y+=Math.sin(theta)*Launcher.step;
+            y-=Math.sin(theta)*Launcher.step;
             distance+=Launcher.step;
         }
         return (int)distance;
@@ -105,12 +108,12 @@ public class Ship {
             return;
         }
         energy-=costs.get("fire");
-        Bullets b = new Bullets(x+dimen, y+dimen, theta, team);
+        Bullets b = new Bullets(x+dimen/2, y+dimen/2, theta, team);
     }
 
     public void thrust(double theta){
         xvel += Math.cos(Math.toRadians(theta)) * THRUSTPOWER;
-        yvel += Math.sin(Math.toRadians(theta)) * THRUSTPOWER;
+        yvel -= Math.sin(Math.toRadians(theta)) * THRUSTPOWER;
     }
 
 }

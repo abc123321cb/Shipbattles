@@ -12,11 +12,11 @@ public class Bullets {
     int yvel;
 
     Bullets(int x, int y, double theta, int team){
-        this.x = x;
-        this.y = y;
+        this.x = x-dimen/2;
+        this.y = y-dimen/2;
         this.team = team;
         xvel = (int) (Math.cos(Math.toRadians(theta)) * VELOCITY);
-        yvel = (int) (Math.sin(Math.toRadians(theta)) * VELOCITY);
+        yvel = (int) -(Math.sin(Math.toRadians(theta)) * VELOCITY);
         bulletList.add(this);
     }
 
@@ -31,6 +31,7 @@ public class Bullets {
                 s.damage(1);
             }
         }
+        if(collided) bulletList.remove(this);
         g.setColor(Color.blue);
         g.drawRect(x,y,dimen,dimen);
     }
