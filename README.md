@@ -51,7 +51,6 @@ scan seems too expensive
 + add free for alls with more then two ships
 
 ### To be added soonish
-+ scans scan bullets :turtle:
 + balance is heavily needed but idk how to fix this
 + bullet sprites
 
